@@ -1,2 +1,8 @@
 # docker-lamp
-LAMP Stack on Docker Containers (Ubuntu, Apache, MySQL, phpMyAdmin)
+LAMP Stack (Ubuntu, Apache, MySQL, phpMyAdmin)
+
+```
+git clone https://github.com/edufrojo/docker-lamp.git
+cd docker-lamp/
+docker-compose up -d
+```
