@@ -1,0 +1,49 @@
+version: '2'
+
+services:
+
+  lamp-mysql:
+    image: mysql:latest
+    container_name: lamp-mysql
+    restart: always
+    ports:
+      - '5001:3306'
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: amcl
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+
+  lamp-php:
+    depends_on:
+    - lamp-mysql
+    links:
+    - lamp-mysql
+    image: tutum/apache-php
+    container_name: lamp-php
+    restart: always
+    ports:
+      - '5002:80'
+    volumes:
+      - ./html:/var/www/html/
+      
+  lamp-phpmyadmin:
+    depends_on:
+    - lamp-mysql
+    links:
+    - lamp-mysql
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: lamp-phpmyadmin
+    restart: always
+    ports:
+    - '5003:80'
+    environment:
+      PMA_USER: root
+      PMA_PASSWORD: root
+      PMA_HOST: "172.18.0.2"
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  db:
