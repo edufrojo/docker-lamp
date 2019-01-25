@@ -1,5 +1,5 @@
 # docker-lamp
-LAMP Stack (Ubuntu, Apache, MySQL & phpMyAdmin)
+Docker LAMP Stack (Linux Ubuntu, Apache, MySQL & PHP)
 
 ```
 git clone https://github.com/edufrojo/docker-lamp.git
